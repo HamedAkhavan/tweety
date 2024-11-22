@@ -19,7 +19,7 @@ class AuthMethods:
             return
 
         self.request.cookies = self.session.cookies_dict()
-        self.request.verify_cookies()
+        # self.request.verify_cookies()
         self.user = self.get_user_info(self.request.username)
         self.request.set_user(self.user)
         self.session.set_session_user(self.user)
@@ -89,7 +89,8 @@ class AuthMethods:
                                 it will be passed to this parameter
         :return: .types.twDataTypes.User (the user which is authenticated)
         """
-        if self.session.logged_in:
+
+        if self.session.logged_in and self.session.user['username'].lower() == username.lower():
             try:
                 return self.connect()
             except InvalidCredentials:
@@ -125,7 +126,7 @@ class AuthMethods:
         return self.connect()
 
     def load_auth_token(self, auth_token):
-        URL = "https://twitter.com/i/api/1.1/account/update_profile.json"
+        URL = "https://x.com/i/api/1.1/account/update_profile.json"
         temp_cookie = {"auth_token": auth_token}
         temp_headers = {'authorization': constants.DEFAULT_BEARER_TOKEN}
         res = self.request.session.post(URL, cookies=temp_cookie, headers=temp_headers)

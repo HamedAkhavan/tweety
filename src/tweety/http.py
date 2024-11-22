@@ -182,9 +182,10 @@ class Request:
                 self.solve_captcha()
                 return self.__get_response__(return_raw, ignore_none_data, is_document, **request_data)
 
-            return GenericError(
-                response, error_code, error_message
-            )
+            if error_code != 34:
+                return GenericError(
+                    response, error_code, error_message
+                )
 
         if return_raw:
             return response
@@ -222,14 +223,13 @@ class Request:
 
     def verify_cookies(self):
 
-        """data = self._builder.aUser_settings()
+        data = self._builder.aUser_settings()
         response = self.__get_response__(**data)
 
         if not response.get("screen_name"):
             raise InvalidCredentials(None, None, None)
 
-        self.username = response.get("screen_name")"""
-        pass
+        self.username = response.get("screen_name")
 
     def get_user(self, username=None):
         if not username:
