@@ -90,7 +90,7 @@ class AuthMethods:
         :return: .types.twDataTypes.User (the user which is authenticated)
         """
 
-        if self.session.logged_in and self.session.user['username'].lower() == username.lower():
+        if self.session.logged_in:
             try:
                 return self.connect()
             except InvalidCredentials:
