@@ -182,10 +182,9 @@ class Request:
                 self.solve_captcha()
                 return self.__get_response__(return_raw, ignore_none_data, is_document, **request_data)
 
-            if error_code != 34:
-                return GenericError(
-                    response, error_code, error_message
-                )
+            return GenericError(
+                response, error_code, error_message
+            )
 
         if return_raw:
             return response
