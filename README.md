@@ -13,7 +13,7 @@ pip install tweety-ns
 ##### **Pip might not be always updated , so to keep everything synced.**
 
 ```bash
-pip install https://github.com/mahrtayyab/tweety/archive/main.zip --upgrade 
+pip install https://github.com/CrossDarkrix/tweety/archive/refs/heads/main.zip --upgrade 
 ```
 
 ## A Quick Example:
