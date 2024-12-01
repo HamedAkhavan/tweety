@@ -89,12 +89,13 @@ class GenericError:
                 retry_after=self.retry_after
             )
 
-        """raise TwitterError(
-            error_code=self.error_code,
-            error_name=TWITTER_ERRORS.get(self.error_code, 0),
-            response=self.response,
-            message="[{}] {}".format(self.error_code, self.message)
-        )"""
+        if self.error_code != 34:
+            raise TwitterError(
+                error_code=self.error_code,
+                error_name=TWITTER_ERRORS.get(self.error_code, 0),
+                response=self.response,
+                message="[{}] {}".format(self.error_code, self.message)
+            )
 
 
 class Cookies:
